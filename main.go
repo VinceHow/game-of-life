@@ -17,7 +17,7 @@ const (
 )
 
 func getSpeed() [8]float64 {
-	possibleSpeeds := [8]float64{0, 0.25, 0.5, 1, 2, 3, 4, 5}
+	possibleSpeeds := [8]float64{0, 0.5, 1, 2, 3, 4, 5, 6}
 	return possibleSpeeds
 }
 
@@ -25,7 +25,7 @@ func getPresets() [][]Cell {
 	var presets [][]Cell
 	set1 :=  make([]Cell,0)
 	presets = append(presets, set1) // default is empty board
-	set2 :=  []Cell{[2]int{17,24},[2]int{17,25},[2]int{17,26}}
+	set2 :=  []Cell{[2]int{17,24},[2]int{17,25},[2]int{17,26},[2]int{10,10},[2]int{10,11},[2]int{11,10},[2]int{11,11}}
 	presets = append(presets, set2) // set 2 is a basic oscillator
 	return presets
 }
@@ -138,6 +138,7 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	msg += fmt.Sprintf("\nBoard preset ID: %v", g.presetId)
 	mx, my := ebiten.CursorPosition()
 	msg += fmt.Sprintf("\n(%d, %d)", mx, my)
+	//msg += fmt.Sprintf("\n%d", g.liveCells)
 	ebitenutil.DebugPrint(screen, msg)
 }
 
